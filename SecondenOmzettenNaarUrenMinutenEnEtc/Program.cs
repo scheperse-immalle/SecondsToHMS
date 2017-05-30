@@ -10,40 +10,33 @@ namespace SecondenOmzettenNaarUrenMinutenEnEtc
     {
         static void Main(string[] args)
         {
-            int h = 0;
-            int m = 0;
-            int s = 0;
-            SecToDaysHoursMins(61, out h, out m, out s);
-            Console.WriteLine("{0} hours {1} minutes and {2} seconds", h, m, s);
+            HMSTime time = SecToHMS(61);
+            Console.WriteLine("{0} hours {1} minutes and {2} seconds", time.Hours, time.Mins, time.Secs);
 
-           
         }
 
-            public static void SecToDaysHoursMins(int totalSeconds, out int hours, out int mins, out int secs)
+        static HMSTime SecToHMS(int totalSeconds)
         {
-         
-            // tijdelijke tussentijdse variabele
+            HMSTime time;
             int rest = 0;
 
-            // algoritme:
-            hours = totalSeconds / (60 * 60);
+            time.Hours = totalSeconds / (60 * 60);
             rest = totalSeconds % (60 * 60);
-            mins = rest / 60;
-            secs = rest % 60;
-
+            time.Mins = rest / 60;
+            time.Secs = rest % 60;
+            return time;
         }
+
+       
     }
-    struct HMSTTime
+    public struct HMSTime
     {
         public int Hours;
         public int Mins;
         public int Secs;
 
-        static HMSTTime ConvertSecondsToHMS(int totalSeconds)
-        {
-            
-        }
+        
     }
 }
-}
+
 
